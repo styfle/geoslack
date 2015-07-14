@@ -89,7 +89,10 @@ app.post('/coords', function(request, response) {
 	do {
 		diffTime = now - people[people.length - 1].date_started;
 		diffMins = Math.round(((diffTime % 86400000) % 3600000) / 60000); // minutes
-		if(diffMins >= decay_minutes) people.pop(); // get new leader
+		if(diffMins >= decay_minutes) {
+			people.pop(); // get new leader
+			pplCtr--;
+		}
 	} while(diffMins >= decay_minutes);
 
 	// DEBUG
