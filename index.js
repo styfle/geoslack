@@ -37,7 +37,7 @@ app.get('/', function(request, response) {
 app.post('/slack', function(request, response) {
 	var attachment =
 	{
-		"text": "Click me -> " + host_app_url + "/geoloc.htm",
+		"text": "Click me -> " + host_app_url,
 	}
 	response.send(attachment);
 });
