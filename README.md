@@ -4,7 +4,7 @@ Slack integration that lets your Slack team plot and share their locations on a 
 
 ## Configuration and Installation
 
-1. Set up a Slack Incoming Webhook
+1. Set up a Slack Incoming Webhook 
 
    ![IncomingWebHook](https://jfqcza.blu.livefilestore.com/y3pS2bZuHnSbgWHHXHpQZS_Bfaa9QhwGB4-yO2RnzmMI7kQABtLps38ZxraFZSYw8zm7sVp2vd5Xl0pFn9EALxS3z-a-XLSTJF9ne7C0MbppA2xKMO8NTaIEIepy2rvu_lkJyG9tW1YVodbJXY9K08hBHU1KiVlNEIypNMdcvXllxQ/SlackWebhookIncoming.PNG?psid=1)
 
