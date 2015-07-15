@@ -16,10 +16,10 @@ Slack integration that lets your Slack team plot and share their locations on a 
    - __`APP_URL`__- Format of URL is `http://<your_heroku_app_url>/geoloc.htm`
    - __`SLACK_INCOMING_WEBHOOK_URL`__ - From Step 1 above, but __SHOULD NOT__ include the http://hooks.slack.com hostname.  See example below
    
-    ![HerokuConfigVars](https://jfqcza.bn1301.livefilestore.com/y3p-sakzecAu1p8XW5mFse0YCNfncPLhtr5155-mJPXavSKLdJ3x0aID6lgOU1xLqlKk11BXyszWhB2Ix3vpnEcvnCMfYhxtjVv38zs2cM702oRad_MYOW1j9r6a4MxxnfJnukz2VcSAvEJXSGWFd4JLdKZrhoNwhJot9qy18m7tbM/03GeoSlack.PNG?psid=1)
+    ![HerokuConfigVars](https://jfqcza.bn1301.livefilestore.com/y3pPyLl-7abAiPAO4PN75-z-QeP6OtNwknYfP-ZLJC6UiwpJRWmuNgOYThIDQgWdE_JkscNpzg_o_B-lFu_jfyEoS5mTw7tFDATDCPGSrcCXWM2ISOxP0rYyEjx_vr2kglwTlmyardqQxf2250lPzZvY_UddtSNOmlabTbIHhX0Sc0/03GeoSlack.PNG?psid=1)
    
 3. Set up a Slack Outgoing Webhook.  
 
-    ![OutgoingWebhook](https://jfqcza.bn1301.livefilestore.com/y3ptDXbbsjVGtWCgMy4W1fc3Jr7i3_HduCha_KtUIan9Q7qrHWfKc7fNrp-k_MOGpy3El1le7yyEvmPnaUDzWEGu460PHdcCaojw2Se0ces7wuN84r82173nSZvtzYLyEjN8BfbJ6VVmZpZwnhdIirKAZSVp-_w9diUn1IvthxzPkQ/SlackWebhookOutgoing.PNG?psid=1)
+    ![OutgoingWebhook](https://jfqcza.bn1301.livefilestore.com/y3pztbn3aZan2FzBqEG_qYOHGyk549uj3kaqHfs4B1PtNVBjfnnD3djUGLxb5Gl3gAzadxiHOsoH1TTc7j_i2mHOEXxWURZYv2nKbJS5ekGHoFA81Rlvj4NIRv-ahQiWMLSVjvIIkkeIEXMVq7VHgB4u33MJqMm2eu6pANZhoXZmgc/SlackWebhookOutgoing.PNG?psid=1)
     
     - URL(s) - Format of URL is `http://<your_heroku_app_url>/slack`
