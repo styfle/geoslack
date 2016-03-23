@@ -11,7 +11,7 @@ Slack integration that lets your Slack team plot and share their locations on a 
 
    ![IncomingWebhook01](https://jfqcza.bn1301.livefilestore.com/y3p_S5RMPKFKxoC_zxhI98n5BAS32_GCFjrUQDC4t67_t728rQYkKz8aaXVFs53YUNxufIoIfoXD59s1pj_4cDzltcS502hNhGNAOB-lMKDcBAb8gSjFBMljjDiC0Zm9X8rxJ8ACgR8gabTd2LlEUaPyR7e7aDmg6eMBYCAs4fXQkA/webhooks01.PNG?psid=1)
 
-    - Click the green button (see above), then you'll see this page (below).  You'll have to scroll down to the __Integration Settings_ to see it:
+    - Click the green button (see above), then you'll see this page (below).  You'll have to scroll down to the __Integration Settings__ to see it:
 
    ![IncomingWebHook02](https://hcikiq.blu.livefilestore.com/y3pwzyFTFZyaKzc37ldIv1nPP9TVS21yA1PgDC4MLunpdj9y9DboT4_ME70hNPKbdeIjm_N1x_yZgeIveudbUu6XrxGLNfb2dmUBS_KG2-WYZ9N9i4zzJI-HDio9L9WaxXibCDmxnZxG1GrTTXXggav-6X6ND1TInWCarz4iYuxa3Q/SlackWebhookIncoming.PNG?psid=1)
 
