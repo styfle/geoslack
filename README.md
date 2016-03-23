@@ -7,9 +7,13 @@ Slack integration that lets your Slack team plot and share their locations on a 
 1. Generate a Slack Incoming Webhook
    - Login to Slack
    - Go to this [link](https://api.slack.com/incoming-webhooks#share_your_incoming_webhook_as_a_slack_app)
-   - Click on "..__incoming webhook integration__" near the top paragraph of the page
+   - Click on "..__incoming webhook integration__" near the top paragraph of the page.  Then you'll se this page..
 
-   ![IncomingWebHook](https://hcikiq.blu.livefilestore.com/y3pem_1TEodCiFzd1ILzGrrd1E3sswJpMG4x8oSkd5n630uaue2Y0soptWBG1Ts8Hj7R_m2JFUJ1_gU8TXb_Tght4ZqGnmCbak1ABQ8J4gbF3sRdGlhS7WZsHfYHcDA_Vl3VH5SW5itOOnh9KKJSMu0naHQJH3sGORav6Q34ox5l14/SlackWebhookIncoming.PNG?psid=1)
+   ![IncomingWebhook01](https://jfqcza.bn1301.livefilestore.com/y3p_S5RMPKFKxoC_zxhI98n5BAS32_GCFjrUQDC4t67_t728rQYkKz8aaXVFs53YUNxufIoIfoXD59s1pj_4cDzltcS502hNhGNAOB-lMKDcBAb8gSjFBMljjDiC0Zm9X8rxJ8ACgR8gabTd2LlEUaPyR7e7aDmg6eMBYCAs4fXQkA/webhooks01.PNG?psid=1)
+
+    - Click the green button above, then you'll see this page (below).  You'll have to scroll down to the __Integration Settings_ to see it:
+
+   ![IncomingWebHook02](https://hcikiq.blu.livefilestore.com/y3pwzyFTFZyaKzc37ldIv1nPP9TVS21yA1PgDC4MLunpdj9y9DboT4_ME70hNPKbdeIjm_N1x_yZgeIveudbUu6XrxGLNfb2dmUBS_KG2-WYZ9N9i4zzJI-HDio9L9WaxXibCDmxnZxG1GrTTXXggav-6X6ND1TInWCarz4iYuxa3Q/SlackWebhookIncoming.PNG?psid=1)
 
 2. Click the button below to deploy the app to your Heroku account.
 
