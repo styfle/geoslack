@@ -1,6 +1,6 @@
 # GeoSlack
 Slack integration that lets your Slack team plot and share their locations on a map
-![GeoSlack](https://dl.dropboxusercontent.com/s/4q2am3ejens0v1y/00GeoSlack.PNG?dl=0)
+![GeoSlack](https://dl.dropboxusercontent.com/s/kellfmkvwinxm11/01GeoSlack.png?dl=0)
 
 ## Configuration and Installation
 
@@ -9,11 +9,11 @@ Slack integration that lets your Slack team plot and share their locations on a 
    - Go to this [link](https://api.slack.com/incoming-webhooks#share_your_incoming_webhook_as_a_slack_app)
    - Click on "..__incoming webhook integration__" near the top paragraph of the page.  Then you'll see this page..
 
-   ![IncomingWebhook01](https://jfqcza.bn1301.livefilestore.com/y3p_S5RMPKFKxoC_zxhI98n5BAS32_GCFjrUQDC4t67_t728rQYkKz8aaXVFs53YUNxufIoIfoXD59s1pj_4cDzltcS502hNhGNAOB-lMKDcBAb8gSjFBMljjDiC0Zm9X8rxJ8ACgR8gabTd2LlEUaPyR7e7aDmg6eMBYCAs4fXQkA/webhooks01.PNG?psid=1)
+   ![IncomingWebhook01](https://dl.dropboxusercontent.com/s/3jjkxvwoniuwglj/webhooks01.PNG?dl=0)
 
     - Click the green button (see above), then you'll see this page (below).  You'll have to scroll down to the __Integration Settings__ to see it:
 
-   ![IncomingWebHook02](https://hcikiq.blu.livefilestore.com/y3pwzyFTFZyaKzc37ldIv1nPP9TVS21yA1PgDC4MLunpdj9y9DboT4_ME70hNPKbdeIjm_N1x_yZgeIveudbUu6XrxGLNfb2dmUBS_KG2-WYZ9N9i4zzJI-HDio9L9WaxXibCDmxnZxG1GrTTXXggav-6X6ND1TInWCarz4iYuxa3Q/SlackWebhookIncoming.PNG?psid=1)
+   ![IncomingWebHook02](https://dl.dropboxusercontent.com/s/6r4hy2n1g3x69s5/SlackWebhookIncoming.PNG?dl=0)
 
 2. Click the button below to deploy the app to your Heroku account.
 
@@ -23,12 +23,12 @@ Slack integration that lets your Slack team plot and share their locations on a 
    - __`APP_URL`__- Format of URL is `http://<your_heroku_app_url>/geoloc.htm`
    - __`SLACK_INCOMING_WEBHOOK_URL`__ - From Step 1 above, but __SHOULD NOT__ include the http://hooks.slack.com hostname.  See example below
 
-    ![HerokuConfigVars](https://hyikiq.bn1301.livefilestore.com/y3p_vZT1hhmrdl2miONAd6x1VJH5dB7WPesWLClmTHsqaqpYGWunJHkmaBOKFzvSBknQ8ZEZfXZ0hI2RGCyeBcuwdTRAujxmNBJ4eAkUZM-eQxtWlrr6xTh59MUMc5RRDUAqNBXVrfeU0fbsSSDmktT3xCxrAWtw0qx2wHhKrqJPl4/03GeoSlack.PNG?psid=1)
+    ![HerokuConfigVars](https://dl.dropboxusercontent.com/s/b42hgobyj3dq1lh/03GeoSlack.PNG?dl=0)
 
 3. Set up a Slack Outgoing Webhook.  
    - Go to this [link](https://api.slack.com/outgoing-webhooks)
    - Click on "..__outgoing webhook integration__" near the top paragraph of the page.  It will take you to a page with a big green button that says __Add Outgoing Webhook Integration__.  Click that.  You will be then taken to this page..
-    ![OutgoingWebhook](https://hiikiq.bn1301.livefilestore.com/y3pX3jSVjMkUp6UN2Jr7sO85ijcYa-s_lVuVW9FO7azyM47GXlwPFRkHx-r3n2W37cUCYTHQboLBa8vZ4Rx7JdIzL7uWgGEx6WqnM51DG5KeR9BK9krJNDjexkyKX4xBJI_lsmw4XiypcAFJMOGUplZAGtunDtlK7fxRttuCUbGx54/SlackWebhookOutgoing.PNG?psid=1)
+    ![OutgoingWebhook](https://dl.dropboxusercontent.com/s/c8cg62s0f0f0q7p/SlackWebhookOutgoing.PNG?dl=0)
 
     - URL(s) - Format of URL is `http://<your_heroku_app_url>/slack`
 
