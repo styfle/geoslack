@@ -1,6 +1,6 @@
 # GeoSlack
 Slack integration that lets your Slack team plot and share their locations on a map
-![GeoSlack](https://g63f5g.bn1301.livefilestore.com/y3pcSJShoDpkk0DEc4jD1h8B5xdH0Cs8tSSN-WbfEQXDg8clyIIn4Ez5gicTjgDlcdr9dPXAc18LZUgOsvng5f-nqq3VitlJDCPIR3Ea-R7CAGqiHjago_9MvC5iU2parNaYsrJRAQD594jEKw13JTNJQWhKS9s7OeGM1iiFCSGP_A/01GeoSlack.png?psid=1)
+![GeoSlack](https://dl.dropboxusercontent.com/s/4q2am3ejens0v1y/00GeoSlack.PNG?dl=0)
 
 ## Configuration and Installation
 
