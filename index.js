@@ -4,12 +4,14 @@
 // - Remove bitly and replace with proper heroku app name
 
 var express = require('express');
+var bodyParser = require("body-parser");
 var app = express();
 var querystring = require('querystring');
 var https = require('https');
 var config = require('./config');
 
 app.set('port', (process.env.PORT || 5000));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.set('views', __dirname + '/views');
@@ -42,10 +44,8 @@ var pplCtr = 0;
 
 // Called by front-end. Receives the coordinates from HTML5 geolocation
 app.post('/coords', function(request, response) {
-	console.log(request.body);
-	const body = JSON.parse(request.body);
-	var latlng = body.lat + "," + body.lng;
-	var user = body.user;
+	const { body, user, lat, lng } = request;
+	var latlng = lat + "," + lng;
 	var now = new Date();
 
 	// Check if user that clicked is already part of the session. We use localstorage to identify returning users
