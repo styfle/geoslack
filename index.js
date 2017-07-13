@@ -1,7 +1,6 @@
 // TODO:
 // - Check unique token passed by slack for /slack and /coords
 // - Expand to infinite users
-// - Clean up geoloc.htm
 // - Remove bitly and replace with proper heroku app name
 
 var express = require('express');
@@ -41,8 +40,9 @@ app.post('/slack', function(request, response) {
 var people = [];
 var pplCtr = 0;
 
-// Called by index.ejs (geoloc.htm). Receives the coordinates from HTML5 geolocation
+// Called by front-end. Receives the coordinates from HTML5 geolocation
 app.post('/coords', function(request, response) {
+	console.log(request.body);
 	const body = JSON.parse(request.body);
 	var latlng = body.lat + "," + body.lng;
 	var user = body.user;
@@ -175,7 +175,6 @@ function doRequest(host, endpoint, method, data, success) {
 
     res.on('end', function() {
       console.log(responseString);
-      //var responseObject = JSON.parse(responseString);
       success(responseString);
     });
   });
