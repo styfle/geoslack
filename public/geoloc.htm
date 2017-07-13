@@ -66,8 +66,8 @@ function success(position) {
    }
 
   $.post("/coords", { lat: position.coords.latitude, lng: position.coords.longitude, user: user }).done(function( data ){
-    window.open('', '_self', '');
-  	window.close();
+    //window.open('', '_self', '');
+  	//window.close();
   });
 }
 
