@@ -1,7 +1,7 @@
 {
   "name": "geoslack",
   "version": "0.0.1",
-  "description": "Geolocate your friends in Slack",
+  "description": "Geolocate your team in Slack",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -13,11 +13,11 @@
     "querystring": "0.2.0"
   },
   "engines": {
-    "node": "0.12.2"
+    "node": "8.1.4"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/concurlabs/geoslack"
+    "url": "https://github.com/styfle/geoslack"
   },
   "keywords": [
     "node",
