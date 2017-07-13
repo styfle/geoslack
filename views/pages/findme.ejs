@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset=utf-8>
-<meta name="viewport" content="width=620">
-<title>GeoSlack</title>
-<link rel="stylesheet" href="stylesheets/html5demos.css">
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=620">
+    <title>GeoSlack</title>
+    <link rel="stylesheet" href="stylesheets/html5demos.css" />
 </head>
 <body>
 <section id="wrapper">
     <header>
       <h1>geolocation</h1>
     </header>
-
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
     <article>
       <p>Finding your location: <span id="status">checking...</span></p>
     </article>
-<script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=<%=process.env.GMAPS_API_KEY%>&sensor=false"></script>
+<script type="text/javascript">
 function success(position) {
   var s = document.querySelector('#status');
 

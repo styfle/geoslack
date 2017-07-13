@@ -33,13 +33,9 @@ app.get('/findme', function(request, response) {
   response.render('pages/findme')
 });
 
-// When bot is called, reply with link to app '<app_url>/geoloc.htm'
+// When bot is called, reply with link to the app
 app.post('/slack', function(request, response) {
-	var attachment =
-	{
-		"text": "Click me -> " + host_app_url,
-	}
-	response.send(attachment);
+	response.send({ "text": "Click me -> " + host_app_url });
 });
 
 var people = [];
@@ -47,7 +43,7 @@ var pplCtr = 0;
 
 // Called by index.ejs (geoloc.htm). Receives the coordinates from HTML5 geolocation
 app.post('/coords', function(request, response) {
-	var body = JSON.parse(request.body);
+	const body = JSON.parse(request.body);
 	var latlng = body.lat + "," + body.lng;
 	var user = body.user;
 	var now = new Date();
