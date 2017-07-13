@@ -1,10 +1,8 @@
 // TODO:
-// - Use ejs templates
 // - Check unique token passed by slack for /slack and /coords
 // - Expand to infinite users
 // - Clean up geoloc.htm
 // - Remove bitly and replace with proper heroku app name
-// - window.close in geoloc.htm not working for Chrome?
 
 var express = require('express');
 var app = express();
@@ -29,6 +27,10 @@ var color  = config.host_app.color;
 
 app.get('/', function(request, response) {
   response.render('pages/index')
+});
+
+app.get('/findme', function(request, response) {
+  response.render('pages/findme')
 });
 
 // When bot is called, reply with link to app '<app_url>/geoloc.htm'
