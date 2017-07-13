@@ -7,13 +7,11 @@
 // - window.close in geoloc.htm not working for Chrome?
 
 var express = require('express');
-var bodyParser = require("body-parser");
 var app = express();
 var querystring = require('querystring');
 var https = require('https');
 var config = require('./config');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
@@ -47,13 +45,16 @@ var pplCtr = 0;
 
 // Called by index.ejs (geoloc.htm). Receives the coordinates from HTML5 geolocation
 app.post('/coords', function(request, response) {
-
-	var latlng = request.body.lat + "," + request.body.lng;
-	var user = request.body.user;
+	var body = JSON.parse(request.body);
+	var latlng = body.lat + "," + body.lng;
+	var user = body.user;
 	var now = new Date();
 
 	// Check if user that clicked is already part of the session. We use localstorage to identify returning users
-	for(var i=0; i < people.length; i++) if(people[i].user == user) break;
+	for (var i=0; i < people.length; i++) {
+		if (people[i].user === user)
+			break;
+	}
 
 	var person = {};
 	person["date_started"] = now;

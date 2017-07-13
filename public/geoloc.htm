@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=620">
 <title>GeoSlack</title>
 <link rel="stylesheet" href="stylesheets/html5demos.css">
-<script src="js/h5utils.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 <body>
 <section id="wrapper">
@@ -57,13 +54,16 @@ function success(position) {
   if (!localStorage.getItem('LocateMe')) {
     localStorage.setItem('LocateMe', randomString(5));
   }
-  var user = localStorage.getItem('LocateMe');
-
-
-  $.post("/coords", { lat: position.coords.latitude, lng: position.coords.longitude, user: user }).done(function( data ){
+  const user = localStorage.getItem('LocateMe');
+  const data = { lat: position.coords.latitude, lng: position.coords.longitude, user: user };
+  fetch('/coords', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(res => {
     //window.open('', '_self', '');
   	//window.close();
-  });
+  }).catch(console.error);
 }
 
 function error(msg) {
@@ -84,7 +84,6 @@ function randomString(length) {
 
 </script>
 </section>
-<script src="js/prettify.packed.js"></script>
 
 </body>
 </html>
