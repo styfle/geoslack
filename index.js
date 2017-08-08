@@ -1,10 +1,7 @@
 // TODO:
-// - Use ejs templates
 // - Check unique token passed by slack for /slack and /coords
 // - Expand to infinite users
-// - Clean up geoloc.htm
 // - Remove bitly and replace with proper heroku app name
-// - window.close in geoloc.htm not working for Chrome?
 
 var express = require('express');
 var bodyParser = require("body-parser");
@@ -13,8 +10,8 @@ var querystring = require('querystring');
 var https = require('https');
 var config = require('./config');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.set('port', (process.env.PORT || 5000));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.set('views', __dirname + '/views');
@@ -33,27 +30,29 @@ app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
-// When bot is called, reply with link to app '<app_url>/geoloc.htm'
+app.get('/findme', function(request, response) {
+  response.render('pages/findme')
+});
+
+// When bot is called, reply with link to the app
 app.post('/slack', function(request, response) {
-	var attachment =
-	{
-		"text": "Click me -> " + host_app_url,
-	}
-	response.send(attachment);
+	response.send({ "text": "Click me -> " + host_app_url });
 });
 
 var people = [];
 var pplCtr = 0;
 
-// Called by index.ejs (geoloc.htm). Receives the coordinates from HTML5 geolocation
+// Called by front-end. Receives the coordinates from HTML5 geolocation
 app.post('/coords', function(request, response) {
-
-	var latlng = request.body.lat + "," + request.body.lng;
-	var user = request.body.user;
+	const { body, user, lat, lng } = request;
+	var latlng = lat + "," + lng;
 	var now = new Date();
 
 	// Check if user that clicked is already part of the session. We use localstorage to identify returning users
-	for(var i=0; i < people.length; i++) if(people[i].user == user) break;
+	for (var i=0; i < people.length; i++) {
+		if (people[i].user === user)
+			break;
+	}
 
 	var person = {};
 	person["date_started"] = now;
@@ -176,7 +175,6 @@ function doRequest(host, endpoint, method, data, success) {
 
     res.on('end', function() {
       console.log(responseString);
-      //var responseObject = JSON.parse(responseString);
       success(responseString);
     });
   });

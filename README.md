@@ -22,6 +22,7 @@ Slack integration that lets your Slack team plot and share their locations on a 
    Name your app. After it has been deployed, scroll near the top and find the app's  __Settings__. Add Heroku config variables for:
    - __`APP_URL`__- Format of URL is `http://<your_heroku_app_url>/geoloc.htm`
    - __`SLACK_INCOMING_WEBHOOK_URL`__ - From Step 1 above, but __SHOULD NOT__ include the http://hooks.slack.com hostname.  See example below
+   - __`GMAPS_API_KEY`__ - From Google Maps [click to get api key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
     ![HerokuConfigVars](https://dl.dropboxusercontent.com/s/b42hgobyj3dq1lh/03GeoSlack.PNG?dl=0)
 
