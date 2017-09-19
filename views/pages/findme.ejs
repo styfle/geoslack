@@ -60,10 +60,7 @@ function success(position) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
-  }).then(res => {
-    //window.open('', '_self', '');
-  	//window.close();
-  }).catch(console.error);
+  }).then(console.log).catch(console.error);
 }
 
 function error(msg) {
