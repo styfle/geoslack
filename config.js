@@ -1,4 +1,4 @@
-var config = {};
+const config = {};
 
 // Values can be pulled from process.env.{VARIABLE}
 

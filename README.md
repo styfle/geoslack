@@ -6,7 +6,7 @@ Slack integration that lets your Slack team plot and share their locations on a 
 
 1. Generate a Slack Incoming Webhook
    - Login to Slack
-   - Go to [this link](https://api.slack.com/incoming-webhooks#share_your_incoming_webhook_as_a_slack_app)
+   - Go to [api.slack.com](https://api.slack.com/incoming-webhooks#share_your_incoming_webhook_as_a_slack_app)
    - Click on "..__incoming webhook integration__" near the top paragraph of the page.  Then you'll see this page..
 
    ![IncomingWebhook01](https://styfle.github.io/geoslack/img/pic2.png)
