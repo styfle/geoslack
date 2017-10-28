@@ -1,7 +1,7 @@
 {
   "name": "Geoslack",
-  "description": "Plot everyone's map location in Slack",
-  "repository": "https://github.com/concurlabs/geoslack",
+  "description": "Geolocate your team in Slack",
+  "repository": "https://github.com/styfle/geoslack",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"]
 }
