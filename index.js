@@ -135,7 +135,7 @@ app.listen(port, () => {
 
 function doRequest(host, endpoint, method, data, success) {
   const dataString = JSON.stringify(data);
-  const headers = {};
+  let headers = {};
 
   if (method == 'GET') {
     endpoint += '?' + querystring.stringify(data);
@@ -155,7 +155,7 @@ function doRequest(host, endpoint, method, data, success) {
   const req = https.request(options, (res) => {
     res.setEncoding('utf-8');
 
-    const responseString = '';
+    let responseString = '';
 
     res.on('data', (data) => {
       responseString += data;
