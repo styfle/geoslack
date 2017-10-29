@@ -21,11 +21,15 @@ Slack integration that lets your team plot and share their locations on a map.
 - Login to your Slack workspace
 - Go to [api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks#share_your_incoming_webhook_as_a_slack_app)
 - Click on [incoming webhook integration](https://my.slack.com/services/new/incoming-webhook/) near the top
-- You will see this page:
-   ![IncomingWebhook01](https://styfle.github.io/geoslack/img/pic2.png)
 - Select a channel and then click the big green **Add Incoming WebHooks Integration** button
-- Scroll down to the **Integration Settings** where you will see this page:
+   ![IncomingWebhook01](https://styfle.github.io/geoslack/img/pic2.png)
+- Scroll down to the **Integration Settings**
    ![IncomingWebHook02](https://styfle.github.io/geoslack/img/pic3.png)
+- Double check the channel name
+- Copy the Webhook URL for later
+- Assign a Custom Name such as "GeoSlack"
+- Assign a Custom Icon such as the `:world_map:` emoji
+- Click the Save Settings button
 
 ## Deployment
 
