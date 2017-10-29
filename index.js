@@ -32,7 +32,8 @@ app.get('/', (request, response) => {
 });
 
 app.get('/findme', (request, response) => {
-  response.render('pages/findme')
+	const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
+  response.render('pages/findme', { script_src })
 });
 
 // When bot is called, reply with link to the app
@@ -44,7 +45,7 @@ var people = [];
 var pplCtr = 0;
 
 // Called by front-end. Receives the coordinates from HTML5 geolocation
-app.post('/coords', function(request, response) {
+app.post('/coords', (request, response) => {
 	const { user, lat, lng } = request.body;
 	const latlng = lat + "," + lng;
 	const now = new Date();
