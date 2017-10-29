@@ -140,23 +140,17 @@ app.listen(port, () => {
 
 function fetchAsync(options) {
 	return new Promise((resolve, reject) => {
-		const dataString = JSON.stringify(data);
+		const dataString = JSON.stringify(options.data);
 		let headers = {};
 
-		if (method == 'GET') {
-			path += '?' + querystring.stringify(data);
+		if (options.method == 'GET') {
+			options.path += '?' + querystring.stringify(options.data);
 		} else {
 			headers = {
 				'Content-Type': 'application/json',
 				'Content-Length': dataString.length
 			};
 		}
-		const options = {
-			host: host,
-			path: path,
-			method: method,
-			headers: headers
-		};
 
 		const req = https.request(options, (res) => {
 			res.setEncoding('utf-8');
