@@ -52,7 +52,7 @@ app.post('/coords', (request, response) => {
 
 	// Check if user that clicked is already part of the session.
 	// We use localstorage to identify returning users
-	for (let i=0; i < people.length; i++) {
+	for (var i=0; i < people.length; i++) {
 		if (people[i].user === user)
 			break;
 	}
