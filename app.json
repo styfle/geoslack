@@ -1,7 +1,7 @@
 {
-  "name": "Geoslack",
+  "name": "GeoSlack",
   "description": "Geolocate your team in Slack",
   "repository": "https://github.com/styfle/geoslack",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"]
+  "logo": "https://styfle.github.io/geoslack/img/nodejs.svg",
+  "keywords": ["node", "express", "geolocate"]
 }
