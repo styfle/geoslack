@@ -1,3 +1,7 @@
+
+const https = require('https');
+const querystring = require('querystring');
+
 function fetchAsync(options) {
 	return new Promise((resolve, reject) => {
 		const dataString = JSON.stringify(options.data);

@@ -5,8 +5,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
-const querystring = require('querystring');
-const https = require('https');
 const { fetchAsync } = require('./utils');
 
 const {
