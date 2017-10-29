@@ -44,7 +44,7 @@ let people = [];
 let pplCtr = 0;
 
 // Called by front-end. Receives the coordinates from HTML5 geolocation
-app.post('/coords', (request, response) => {
+app.post('/coords', async (request, response) => {
 	const { user, lat, lng } = request.body;
 	const latlng = lat + "," + lng;
 	let now = new Date();
@@ -128,11 +128,10 @@ app.post('/coords', (request, response) => {
 		data: attachment
 	};
 
-	const concurData = fetchAsync(fetchOptions).then(() => {
-		const str = request.body.lat + " " + request.body.lng;
-		console.log(str);
-		response.send(str);
-	}).catch(console.error)
+	const concurData = await fetchAsync(fetchOptions);
+	const str = request.body.lat + " " + request.body.lng;
+	console.log(str);
+	response.send(str);
 });
 
 app.listen(port, () => {
