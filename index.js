@@ -48,7 +48,7 @@ var pplCtr = 0;
 app.post('/coords', (request, response) => {
 	const { user, lat, lng } = request.body;
 	const latlng = lat + "," + lng;
-	const now = new Date();
+	let now = new Date();
 
 	// Check if user that clicked is already part of the session.
 	// We use localstorage to identify returning users
