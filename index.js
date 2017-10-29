@@ -1,42 +1,43 @@
 // TODO:
 // - Check unique token passed by slack for /slack and /coords
 // - Expand to infinite users
-// - Remove bitly and replace with proper heroku app name
 
-var express = require('express');
-var bodyParser = require("body-parser");
-var app = express();
-var querystring = require('querystring');
-var https = require('https');
-var config = require('./config');
+const express = require('express');
+const bodyParser = require("body-parser");
+const app = express();
+const querystring = require('querystring');
+const https = require('https');
 
-app.set('port', (process.env.PORT || 5000));
+const {
+	port,
+	app_url,
+	gmaps_api_key,
+	slack_incoming_webhook_url,
+	decay_minutes,
+	mapsize,
+	maptype,
+	label,
+	color
+} = require('./config');
+
+app.set('port', port);
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-// CONFIG from config.js
-var host_app_url  = config.host_app.url;
-var decay_minutes = config.host_app.decay_minutes;
-var slack_incoming_webhook_endpoint = config.slack.incoming_webhook_endpoint;
-var mapsize = config.host_app.mapsize;
-var maptype = config.host_app.maptype;
-var label = config.host_app.label;
-var color  = config.host_app.color;
-
-app.get('/', function(request, response) {
+app.get('/', (request, response) => {
   response.render('pages/index')
 });
 
-app.get('/findme', function(request, response) {
+app.get('/findme', (request, response) => {
   response.render('pages/findme')
 });
 
 // When bot is called, reply with link to the app
-app.post('/slack', function(request, response) {
-	response.send({ "text": "Click me -> " + host_app_url });
+app.post('/slack', (request, response) => {
+	response.send({ "text": "Click me -> " + app_url });
 });
 
 var people = [];
@@ -48,13 +49,14 @@ app.post('/coords', function(request, response) {
 	const latlng = lat + "," + lng;
 	const now = new Date();
 
-	// Check if user that clicked is already part of the session. We use localstorage to identify returning users
-	for (var i=0; i < people.length; i++) {
+	// Check if user that clicked is already part of the session.
+	// We use localstorage to identify returning users
+	for (let i=0; i < people.length; i++) {
 		if (people[i].user === user)
 			break;
 	}
 
-	var person = {};
+	let person = {};
 	person["date_started"] = now;
 	person["latlng"] = latlng;
 
@@ -73,16 +75,13 @@ app.post('/coords', function(request, response) {
 	}
 
 	// This builds the markers for the Google static map
-	var markerParam = "";
+	let markerParam = "";
 
 	// Sort users, put the oldest at the end for pop()
-	people.sort(function(a, b){return b.date_started - a.date_started});
+	people.sort((a, b) => b.date_started - a.date_started);
 
-	// DEBUG
-	//for(var i=0; i < people.length; i++) console.log(people[i].label + " - " + people[i].date_started);
-
-	var diffTime = null;
-	var diffMins = null;
+	let diffTime = null;
+	let diffMins = null;
 
 	// Kick (pop) users if they exceed the session time
 	do {
@@ -94,17 +93,13 @@ app.post('/coords', function(request, response) {
 		}
 	} while(diffMins >= decay_minutes);
 
-	// DEBUG
-	//for(var i=0; i < people.length; i++) console.log(people[i].label + " - " + people[i].date_started);
-	//console.log(diffMins);
-
 	// Create markers/pin for each user on the map
-	people.forEach(function(entry) {
+	people.forEach((entry) => {
 	    markerParam += "&markers=color%3A" + entry.color + "%7Clabel%3A" + entry.label + "%7Cshadow%3Atrue%7C" + entry.latlng
 	});
 
 	// Construct the message to send to Slack using Incoming Webhooks Attachment format
-	var attachment = {
+	const attachment = {
 		"attachments": [
 			{
 				"fallback": "Required plain-text summary of the attachment.",
@@ -112,16 +107,13 @@ app.post('/coords', function(request, response) {
 				"pretext": people.length + " people have joined. " + (decay_minutes - diffMins)+ " mins left before " + people[people.length -1].label + " [leader] drops out",
 				"title": person.label + "'s location",
 				"title_link": "https://www.google.com/maps/place/" + latlng,
-				"image_url": "https://maps.googleapis.com/maps/api/staticmap?" +
-							 "size=" + mapsize +
-							 "&maptype=" + maptype +
-							 markerParam,
+				"image_url": "https://maps.googleapis.com/maps/api/staticmap?" + "size=" + mapsize + "&maptype=" + maptype + markerParam,
 				//"thumb_url": "http://example.com/path/to/thumb.png"
 				 "fields":[
 					{
 					   "title": "Update your own location",
-					   "value": host_app_url + "",
-					   "short":false
+					   "value": app_url,
+					   "short": false
 					}
 				 ]
 			}
@@ -129,51 +121,46 @@ app.post('/coords', function(request, response) {
 	}
 
 	// Send message/attachment to Slack
-	var host = "hooks.slack.com";
-	var endpoint = slack_incoming_webhook_endpoint;
-	doRequest(host, endpoint, 'POST', attachment,
-		function(concurData) {
+	doRequest("hooks.slack.com", slack_incoming_webhook_url, 'POST', attachment, (concurData) => {
   			console.log(request.body.lat + " " + request.body.lng);
   			response.send(request.body.lat + " " + request.body.lng);
 		});
 });
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+app.listen(port, () => {
+  console.log('Node app is running on port', port);
 });
 
-// UTILS
 
 function doRequest(host, endpoint, method, data, success) {
-  var dataString = JSON.stringify(data);
-  var headers = {};
+  const dataString = JSON.stringify(data);
+  const headers = {};
 
   if (method == 'GET') {
     endpoint += '?' + querystring.stringify(data);
-  }
-  else {
+  } else {
     headers = {
       'Content-Type': 'application/json',
       'Content-Length': dataString.length
     };
   }
-  var options = {
+  const options = {
     host: host,
     path: endpoint,
     method: method,
     headers: headers
   };
 
-  var req = https.request(options, function(res) {
+  const req = https.request(options, (res) => {
     res.setEncoding('utf-8');
 
-    var responseString = '';
+    const responseString = '';
 
-    res.on('data', function(data) {
+    res.on('data', (data) => {
       responseString += data;
     });
 
-    res.on('end', function() {
+    res.on('end', () => {
       console.log(responseString);
       success(responseString);
     });
