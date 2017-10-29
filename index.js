@@ -41,8 +41,8 @@ app.post('/slack', (request, response) => {
 	response.send({ "text": "Click me -> " + app_url });
 });
 
-var people = [];
-var pplCtr = 0;
+let people = [];
+let pplCtr = 0;
 
 // Called by front-end. Receives the coordinates from HTML5 geolocation
 app.post('/coords', (request, response) => {
@@ -122,10 +122,15 @@ app.post('/coords', (request, response) => {
 	}
 
 	// Send message/attachment to Slack
-	doRequest("hooks.slack.com", slack_incoming_webhook_url, 'POST', attachment, (concurData) => {
-  			console.log(request.body.lat + " " + request.body.lng);
-  			response.send(request.body.lat + " " + request.body.lng);
-		});
+	const fetchOptions = {
+		method: 'POST',
+		host: 'hooks.slack.com',
+		path: slack_incoming_webhook_url,
+		data: attachment
+	};
+	const concurData = await fetchAsync(fetchOptions);
+	console.log(request.body.lat + " " + request.body.lng);
+	response.send(request.body.lat + " " + request.body.lng);
 });
 
 app.listen(port, () => {
@@ -133,40 +138,41 @@ app.listen(port, () => {
 });
 
 
-function doRequest(host, endpoint, method, data, success) {
-  const dataString = JSON.stringify(data);
-  let headers = {};
+function fetchAsync(options) {
+	return new Promise((resolve, reject) => {
+		const dataString = JSON.stringify(data);
+		let headers = {};
 
-  if (method == 'GET') {
-    endpoint += '?' + querystring.stringify(data);
-  } else {
-    headers = {
-      'Content-Type': 'application/json',
-      'Content-Length': dataString.length
-    };
-  }
-  const options = {
-    host: host,
-    path: endpoint,
-    method: method,
-    headers: headers
-  };
+		if (method == 'GET') {
+			path += '?' + querystring.stringify(data);
+		} else {
+			headers = {
+				'Content-Type': 'application/json',
+				'Content-Length': dataString.length
+			};
+		}
+		const options = {
+			host: host,
+			path: path,
+			method: method,
+			headers: headers
+		};
 
-  const req = https.request(options, (res) => {
-    res.setEncoding('utf-8');
+		const req = https.request(options, (res) => {
+			res.setEncoding('utf-8');
 
-    let responseString = '';
+			let responseString = '';
 
-    res.on('data', (data) => {
-      responseString += data;
-    });
+			res.on('data', (data) => {
+				responseString += data;
+			});
 
-    res.on('end', () => {
-      console.log(responseString);
-      success(responseString);
-    });
-  });
+			res.on('end', () => {
+				resolve(responseString);
+			});
+		});
 
-  req.write(dataString);
-  req.end();
+		req.write(dataString);
+		req.end();
+	});
 }
