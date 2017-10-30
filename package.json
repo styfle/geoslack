@@ -1,6 +1,6 @@
 {
   "name": "geoslack",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Geolocate your team in Slack",
   "main": "index.js",
   "scripts": {

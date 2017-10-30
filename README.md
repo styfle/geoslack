@@ -1,5 +1,11 @@
 # GeoSlack
 
+[![npm](https://img.shields.io/npm/v/geoslack.svg)](https://www.npmjs.com/package/geoslack)
+[![Downloads](https://img.shields.io/npm/dt/geoslack.svg)](https://www.npmjs.com/package/geoslack)
+[![Dependency Status](https://david-dm.org/styfle/geoslack.svg)](https://david-dm.org/styfle/geoslack)
+[![devDependency Status](https://david-dm.org/styfle/geoslack/dev-status.svg)](https://david-dm.org/styfle/geoslack#info=devDependencies)
+[![Build Status](https://travis-ci.org/styfle/geoslack.svg?branch=master)](https://travis-ci.org/styfle/geoslack)
+
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/fnqaM5soqgNJruSNFm8pdqUw/styfle/geoslack'>
   <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/fnqaM5soqgNJruSNFm8pdqUw/styfle/geoslack.svg' />
 </a>
