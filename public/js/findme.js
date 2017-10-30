@@ -2,11 +2,10 @@ function success(position) {
   const s = document.querySelector('#status');
 
   if (s.className == 'success') {
-    // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back
     return;
   }
 
-  s.innerHTML = "found you!";
+  s.innerHTML = 'found you!';
   s.className = 'success';
 
   const mapcanvas = document.createElement('div');
@@ -16,26 +15,23 @@ function success(position) {
 
   document.querySelector('article').appendChild(mapcanvas);
 
-  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  var myOptions = {
+  const latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  const mapOptions = {
     zoom: 15,
     center: latlng,
     mapTypeControl: false,
-    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+    navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+  const map = new google.maps.Map(mapcanvas, mapOptions);
 
-  var marker = new google.maps.Marker({
+  const marker = new google.maps.Marker({
       position: latlng,
       map: map,
-      title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+      title: `You are here! (within a ${position.coords.accuracy} meter radius)`
   });
 
-  if (!localStorage.getItem('LocateMe')) {
-    localStorage.setItem('LocateMe', randomString(5));
-  }
-  const user = localStorage.getItem('LocateMe');
+  const user = document.querySelector('#username').value;
   const data = { lat: position.coords.latitude, lng: position.coords.longitude, user: user };
   fetch('/coords', {
     method: 'POST',
@@ -45,18 +41,27 @@ function success(position) {
 }
 
 function error(msg) {
-  var s = document.querySelector('#status');
-  s.innerHTML = typeof msg == 'string' ? msg : "failed";
+  const s = document.querySelector('#status');
+  s.innerHTML = typeof msg == 'string' ? msg : 'failed';
   s.className = 'fail';
 }
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(success, error);
-} else {
-  error('not supported');
+function init() {
+  const submit = document.querySelector('#submit');
+  submit.addEventListener('click', () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      error('not supported');
+    }
+  });
+
+  const username = document.querySelector('#username');
+  username.value = localStorage.getItem('geoslack-username');
+
+  username.addEventListener('change', () => {
+    localStorage.setItem('geoslack-username', username.value);
+  });
 }
 
-function randomString(length) {
-  return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-}
-  
+init();
