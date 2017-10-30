@@ -12,11 +12,13 @@
       <h1>GeoSlack</h1>
     </header>
     <article>
-      <p>Finding your location: <span id="status">checking...</span></p>
       <label>Your name: <input id="username" type="text" /></label>
       <div>
         <button id="submit">Post to Slack!</button>
       </div>
+      <p id="finding" style="display:none">
+        Finding your location: <span id="status">checking...</span>
+      </p>
     </article>
 
 <script type="text/javascript" src="<%= script_src %>"></script>

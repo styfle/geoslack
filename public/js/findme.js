@@ -1,4 +1,6 @@
 function success(position) {
+  document.querySelector('#finding').style.display = 'block';
+  
   const s = document.querySelector('#status');
 
   if (s.className == 'success') {
