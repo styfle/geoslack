@@ -7,30 +7,41 @@ function fetchAsync(options) {
 		const dataString = JSON.stringify(options.data);
 		let headers = {};
 
-		if (options.method == 'GET') {
-			options.path += '?' + querystring.stringify(options.data);
+		if (options.method === 'GET') {
+			const qs = querystring.stringify(options.data);
+			if (qs) {
+				options.path += '?' + qs;
+			}
 		} else {
 			headers = {
 				'Content-Type': 'application/json',
-				'Content-Length': dataString.length
+				'Content-Length': dataString ? dataString.length : 0
 			};
 		}
 
 		const req = https.request(options, (res) => {
 			res.setEncoding('utf-8');
+			if (res.statusCode !== 200) {
+				reject(new Error('Failed with status code ' + res.statusCode));
+				return;
+			}
 
-			let responseString = '';
+			let str = '';
 
 			res.on('data', (data) => {
-				responseString += data;
+				str += data;
 			});
 
 			res.on('end', () => {
-				resolve(responseString);
+				resolve(str);
 			});
 		});
 
-		req.write(dataString);
+		req.on('error', e => reject(e));
+
+		if (dataString) {
+			req.write(dataString);
+		}
 		req.end();
 	});
 }

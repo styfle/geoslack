@@ -31,7 +31,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/findme', (request, response) => {
-	const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
+  const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
   response.render('pages/findme', { script_src })
 });
 
