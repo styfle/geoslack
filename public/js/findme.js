@@ -1,9 +1,7 @@
 function success(position) {
-  document.querySelector('#finding').style.display = 'block';
-  
   const s = document.querySelector('#status');
 
-  if (s.className == 'success') {
+  if (s.className === 'success') {
     return;
   }
 
@@ -44,13 +42,15 @@ function success(position) {
 
 function error(msg) {
   const s = document.querySelector('#status');
-  s.innerHTML = typeof msg == 'string' ? msg : 'failed';
+  s.innerHTML = typeof msg === 'string' ? msg : 'failed';
   s.className = 'fail';
 }
 
 function init() {
   const submit = document.querySelector('#submit');
   submit.addEventListener('click', () => {
+    const finding = document.querySelector('#finding');
+    finding.style.display = 'block';
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
