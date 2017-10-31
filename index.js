@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const app = express();
 const { fetchAsync, getExpiredUsers } = require('./utils');
 
@@ -29,6 +29,12 @@ app.get('/', (request, response) => {
   response.render('pages/index')
 });
 
+app.get('/everyone', (request, response) => {
+  const people = Object.values(userToPerson);
+  const img_src = getImageUrl(people);
+  response.render('pages/everyone', { img_src })
+});
+
 app.get('/findme', (request, response) => {
   const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
   response.render('pages/findme', { script_src })
@@ -49,15 +55,6 @@ app.post('/coords', async (request, response) => {
     delete userToPerson[p.user];
   });
   const people = Object.values(userToPerson);
-
-  // This builds the markers/pins for the Google static map
-  const markers = people
-    .map(p => `markers=color%3A${p.color}%7Clabel%3A${p.user}%7Cshadow%3Atrue%7C${p.latlng}`)
-    .join('&');
-
-  //const str = (decay_minutes - diffMins)+ " mins left before " + people[people.length -1].label + " [leader] drops out";
-
-	// Construct the message to send to Slack using Incoming Webhooks Attachment format
 	const attachment = {
 		"attachments": [
 			{
@@ -66,7 +63,7 @@ app.post('/coords', async (request, response) => {
 				"pretext": `${people.length} people have joined.`,
 				"title": `${person.user}'s location`,
 				"title_link": `https://www.google.com/maps/place/${latlng}`,
-				"image_url": `https://maps.googleapis.com/maps/api/staticmap?size=${mapsize}&maptype=${maptype}&${markers}`,
+				"image_url": getImageUrl(people),
 				//"thumb_url": "http://example.com/path/to/thumb.png"
 				 "fields":[
 					{
@@ -109,5 +106,12 @@ function getPerson(dt, user, latlng) {
   person.latlng = latlng;
   
   return person;
+}
+
+function getImageUrl(people) {
+  const markers = people
+    .map(p => `markers=color%3A${p.color}%7Clabel%3A${p.user}%7Cshadow%3Atrue%7C${p.latlng}`)
+    .join('&');
+  return `https://maps.googleapis.com/maps/api/staticmap?size=${mapsize}&maptype=${maptype}&${markers}`;
 }
 
