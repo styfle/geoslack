@@ -16,8 +16,7 @@ const config = {
     decay_minutes: 10,
     mapsize: "500x400",
     maptype: "roadmap",
-    label: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
-    color: ["red","green","blue","orange","yellow","purple","gray","brown","black","white"],
+    colors: ["red","green","blue","orange","yellow","purple","gray","brown","black","white"],
 };
 
 module.exports = config;
