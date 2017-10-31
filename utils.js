@@ -46,6 +46,12 @@ function fetchAsync(options) {
 	});
 }
 
+function getExpiredUsers(userToPerson, now) {
+	const time = now.getTime() - (15 * 60 * 1000); // 15 min ago
+	return Object.values(userToPerson).filter(p => p.date_started < time);
+}
+
 module.exports = {
-    fetchAsync: fetchAsync
+	fetchAsync: fetchAsync,
+	getExpiredUsers: getExpiredUsers
 };

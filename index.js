@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
-const { fetchAsync } = require('./utils');
+const { fetchAsync, getExpiredUsers } = require('./utils');
 
 let userToPerson = {};
 let pplCtr = 0;
@@ -44,25 +44,11 @@ app.post('/coords', async (request, response) => {
   let now = new Date();
   console.log(`[${now.toISOString()}] ${user} is at location ${latlng}`);
   const person = getPerson(now, user, latlng);
+  const expiredPeople = getExpiredUsers(userToPerson, now);
+  expiredPeople.forEach(p => {
+    delete userToPerson[p.user];
+  });
   const people = Object.values(userToPerson);
-
-	// Sort users, put the oldest at the end for pop()
-	const last = people.sort((a, b) => b.date_started - a.date_started);
-
-	let diffTime = null;
-	let diffMins = null;
-
-	/* Kick (pop) users if they exceed the session time
-	do {
-		diffTime = now - people[people.length - 1].date_started;
-		diffMins = Math.round(((diffTime % 86400000) % 3600000) / 60000); // minutes
-		if (diffMins >= decay_minutes) {
-			people.pop();
-			pplCtr--;
-		}
-  } while(diffMins >= decay_minutes);
-  */
-
 
   // This builds the markers/pins for the Google static map
   const markers = people
