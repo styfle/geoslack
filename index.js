@@ -1,22 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const { fetchAsync, getExpiredUsers } = require('./utils');
 
-let userToPerson = {};
-let pplCtr = 0;
+const {
+  fetchAsync,
+  getExpiredUsers,
+  getImageUrl,
+  getEtaAsync
+} = require('./utils');
 
 const {
 	port,
 	app_url,
 	gmaps_api_key,
-	slack_incoming_webhook_url,
+  slack_incoming_webhook_url,
+  destination_coords,
 	decay_minutes,
 	mapsize,
 	maptype,
 	label,
 	colors
 } = require('./config');
+
+let userToPerson = {};
+let pplCtr = 0;
 
 app.set('port', port);
 app.use(bodyParser.json());
@@ -31,7 +38,7 @@ app.get('/', (request, response) => {
 
 app.get('/everyone', (request, response) => {
   const people = Object.values(userToPerson);
-  const img_src = getImageUrl(people);
+  const img_src = getImageUrl(people, mapsize, maptype);
   response.render('pages/everyone', { img_src })
 });
 
@@ -55,15 +62,21 @@ app.post('/coords', async (request, response) => {
     delete userToPerson[p.user];
   });
   const people = Object.values(userToPerson);
+  const pretext = `GeoSlack is tracking ${people.length} people`;
+  const title = `${person.user}'s location`;
+  const eta = await getEtaAsync(latlng, destination_coords, gmaps_api_key);
+  if (eta) {
+    title += ` (ETA ${eta})`;
+  }
 	const attachment = {
 		"attachments": [
 			{
 				"fallback": "Required plain-text summary of the attachment.",
 				"color": "#36a64f",
-				"pretext": `${people.length} people have joined.`,
-				"title": `${person.user}'s location`,
+				"pretext": pretext,
+				"title": title,
 				"title_link": `https://www.google.com/maps/place/${latlng}`,
-				"image_url": getImageUrl(people),
+				"image_url": getImageUrl(people, mapsize, maptype),
 				//"thumb_url": "http://example.com/path/to/thumb.png"
 				 "fields":[
 					{
@@ -108,10 +121,5 @@ function getPerson(dt, user, latlng) {
   return person;
 }
 
-function getImageUrl(people) {
-  const markers = people
-    .map(p => `markers=color%3A${p.color}%7Clabel%3A${p.user}%7Cshadow%3Atrue%7C${p.latlng}`)
-    .join('&');
-  return `https://maps.googleapis.com/maps/api/staticmap?size=${mapsize}&maptype=${maptype}&${markers}`;
-}
+
 
