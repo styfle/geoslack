@@ -63,7 +63,7 @@ app.post('/coords', async (request, response) => {
   });
   const people = Object.values(userToPerson);
   const pretext = `GeoSlack is tracking ${people.length} people`;
-  const title = `${person.user}'s location`;
+  let title = `${person.user}'s location`;
   const eta = await getEtaAsync(latlng, destination_coords, gmaps_api_key);
   if (eta) {
     title += ` (ETA ${eta})`;
