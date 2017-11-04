@@ -24,6 +24,7 @@ const {
 
 let userToPerson = {};
 let pplCtr = 0;
+const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
 
 app.set('port', port);
 app.use(bodyParser.json());
@@ -33,18 +34,21 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', (request, response) => {
-  response.render('pages/index')
+  response.render('pages/index');
 });
 
 app.get('/everyone', (request, response) => {
-  const people = Object.values(userToPerson);
-  const img_src = getImageUrl(people, mapsize, maptype);
-  response.render('pages/everyone', { img_src })
+  response.render('pages/everyone', { script_src });
+});
+
+app.get('/coords-everyone', (request, response) => {
+	const people = Object.values(userToPerson);
+	const json = JSON.stringify(people);
+	response.send(json);
 });
 
 app.get('/findme', (request, response) => {
-  const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
-  response.render('pages/findme', { script_src })
+  response.render('pages/findme', { script_src });
 });
 
 app.post('/slack', (request, response) => {
@@ -56,7 +60,7 @@ app.post('/coords', async (request, response) => {
 	const latlng = lat + ',' + lng;
   let now = new Date();
   console.log(`[${now.toISOString()}] ${user} is at location ${latlng}`);
-  const person = getPerson(now, user, latlng);
+  const person = getPerson(now, user, lat, lng);
   const expiredPeople = getExpiredUsers(userToPerson, now);
   expiredPeople.forEach(p => {
     delete userToPerson[p.user];
@@ -103,7 +107,7 @@ app.listen(port, () => {
   console.log('Node app is running on port', port);
 });
 
-function getPerson(dt, user, latlng) {
+function getPerson(dt, user, lat, lng) {
   let person = userToPerson[user];
 
   if (!person) {
@@ -116,7 +120,8 @@ function getPerson(dt, user, latlng) {
   }
 
   person.date_started = dt;
-  person.latlng = latlng;
+  person.lat = lat;
+  person.lng = lng;
   
   return person;
 }
