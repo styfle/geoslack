@@ -23,7 +23,7 @@ Slack integration that lets your team plot and share their locations on a map.
     - Host it yourself
 3. You must have team members in the same Slack Team/Workspace (optional 😜)
 
-!Tracking](https://styfle.github.io/geoslack/img/tracking.png)
+![Tracking](https://styfle.github.io/geoslack/img/tracking.png)
 
 ## Create a Incoming Webhook
 
