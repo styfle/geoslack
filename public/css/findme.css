@@ -71,3 +71,9 @@ button, input {
 #submit:hover {
 	background: #5be071;
 }
+
+#mapcanvas {
+  display: none;
+  width: 560px;
+  height: 400px;
+}
