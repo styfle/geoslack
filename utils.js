@@ -51,7 +51,43 @@ function getExpiredUsers(userToPerson, now) {
 	return Object.values(userToPerson).filter(p => p.date_started < time);
 }
 
+function getImageUrl(people, mapsize, maptype) {
+	const markers = people
+		.map(p => `markers=color%3A${p.color}%7Clabel%3A${p.user}%7Cshadow%3Atrue%7C${p.latlng}`)
+		.join('&');
+	return `https://maps.googleapis.com/maps/api/staticmap?size=${mapsize}&maptype=${maptype}&${markers}`;
+}
+
+async function getEtaAsync(origin, destination, key) {
+	if (!origin || !destination) {
+		return '';
+	}
+
+	const text = await fetchAsync({
+		method: 'GET',
+		host: 'maps.googleapis.com',
+		path: '/maps/api/distancematrix/json',
+		data: {
+			units: 'imperial',
+			origins: origin,
+			destinations: destination,
+			key: key
+		}
+	});
+
+	const obj = JSON.parse(text);
+
+	if (obj.status !== 'OK') {
+		console.error(obj.error_message);
+		return '';
+	}
+
+	return obj.rows[0].elements[0].duration.text;
+}
+
 module.exports = {
 	fetchAsync: fetchAsync,
-	getExpiredUsers: getExpiredUsers
+	getExpiredUsers: getExpiredUsers,
+	getImageUrl: getImageUrl,
+	getEtaAsync: getEtaAsync
 };

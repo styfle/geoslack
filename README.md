@@ -52,8 +52,9 @@ However, you can deploy to any server that can run Node.js and change environmen
 - Click the **Reveal Config Vars** button to show environment variables
 - Add the following key/value pairs:
    - `APP_URL` - From "domains", format: `http://<your_heroku_domain>/findme`
-   - `SLACK_INCOMING_WEBHOOK_URL` - From Step 1 above, format: `https://hooks.slack.com/<more>`
+   - `SLACK_WEBHOOK_URL` - From Step 1 above, format: `https://hooks.slack.com/<more>`
    - `GMAPS_API_KEY` - From Google Maps [click to get api key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+   - `DESTINATION` - optional address or coordinates of your team's workplace
     ![HerokuConfigVars](https://styfle.github.io/geoslack/img/pic4.png)
 
 ## (Optional) Create an Outgoing Webhook
