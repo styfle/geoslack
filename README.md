@@ -12,8 +12,7 @@
 
 Slack integration that lets your team plot and share their locations on a map.
 
-<img src="https://styfle.github.io/geoslack/img/tracking.png" height="100" align="left" />
-<img src="https://styfle.github.io/geoslack/img/findme.png" height="100" align="left" />
+[Find Me](https://styfle.github.io/geoslack/img/findme.png)
 
 ## Prerequisites
 
@@ -22,6 +21,9 @@ Slack integration that lets your team plot and share their locations on a map.
     - Heroku
     - Zeit Now
     - Host it yourself
+3. You must have team members in the same Slack Team/Workspace (optional 😜)
+
+[Tracking](https://styfle.github.io/geoslack/img/tracking.png)
 
 ## Create a Incoming Webhook
 
