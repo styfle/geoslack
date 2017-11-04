@@ -57,6 +57,7 @@ button, input {
 }
 
 #submit {
+  cursor: pointer;
 	background: #45c343;
 	color: #fff;
   font-weight: bold;

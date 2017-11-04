@@ -12,13 +12,19 @@
       <h1>Find Me</h1>
     </header>
     <article>
-      <label>Your name: <input id="username" type="text" /></label>
+      <div>
+        <label>Your name: <input id="username" type="text" /></label>
+      </div>
+      <div>
+        <label>Auto-update: <input id="autoupdate" type="checkbox" /></label>
+      </div>
       <div>
         <button id="submit">Post to Slack!</button>
       </div>
       <p id="finding" style="display:none">
-        Finding your location: <span id="status">checking...</span>
+        Finding your location: <span id="status"></span>
       </p>
+      <div id="mapcanvas" style="display:none;width:560px;height:400px;"></div>
     </article>
 
 <script type="text/javascript" src="<%= script_src %>"></script>
