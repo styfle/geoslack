@@ -67,3 +67,10 @@ This is optional but will allow you to type a keyword and get a link to the GeoS
 - Add url `http://<your_heroku_domain>/slack`
     ![OutgoingWebhook](https://styfle.github.io/geoslack/img/pic5.png)
 
+## Prior Art
+
+This code was forked from [concurlabs/geoslack](https://github.com/concurlabs/geoslack) which is no longer maintained. Since forking, I added a couple new features including
+
+1. A page to show everyone's location
+2. ETA to your destination 
+3. (future) Periodically update location
