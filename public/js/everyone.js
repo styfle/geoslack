@@ -1,6 +1,7 @@
 async function loop(position) {
     const { maps } = google;
     const mapcanvas = document.querySelector('#mapcanvas');
+    const count = document.querySelector('#count');
     const currentUser = localStorage.getItem('geoslack-username');
     let centerLatLng = null;
 
@@ -11,6 +12,7 @@ async function loop(position) {
 
     const res = await fetch('/coords-everyone', fetchOptions);
     const people = await res.json();
+    count.textContent = people.length;
 
     const markers = people.map(p => {
         const { user, lat, lng } = p;
