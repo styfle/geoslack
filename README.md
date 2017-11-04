@@ -12,8 +12,8 @@
 
 Slack integration that lets your team plot and share their locations on a map.
 
-![GeoSlack](https://styfle.github.io/geoslack/img/tracking.png)
-![GeoSlack](https://styfle.github.io/geoslack/img/pic1.png)
+<img src="https://styfle.github.io/geoslack/img/tracking.png" height="100" align="left" />
+<img src="https://styfle.github.io/geoslack/img/findme.png" height="100" align="left" />
 
 ## Prerequisites
 
