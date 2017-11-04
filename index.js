@@ -13,8 +13,8 @@ const {
 	port,
 	app_url,
 	gmaps_api_key,
-  slack_incoming_webhook_url,
-  destination_coords,
+  slack_webhook_url,
+  destination,
 	decay_minutes,
 	mapsize,
 	maptype,
@@ -64,7 +64,7 @@ app.post('/coords', async (request, response) => {
   const people = Object.values(userToPerson);
   const pretext = `GeoSlack is tracking ${people.length} people`;
   let title = `${person.user}'s location`;
-  const eta = await getEtaAsync(latlng, destination_coords, gmaps_api_key);
+  const eta = await getEtaAsync(latlng, destination, gmaps_api_key);
   if (eta) {
     title += ` (ETA ${eta})`;
   }
@@ -92,7 +92,7 @@ app.post('/coords', async (request, response) => {
 	const slackRes = await fetchAsync({
 		method: 'POST',
 		host: 'hooks.slack.com',
-		path: slack_incoming_webhook_url,
+		path: slack_webhook_url,
 		data: attachment
   });
   
