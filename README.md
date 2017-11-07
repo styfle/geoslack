@@ -10,7 +10,11 @@
   <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/fnqaM5soqgNJruSNFm8pdqUw/styfle/geoslack.svg' />
 </a>
 
-Slack integration that lets your team plot and share their locations on a map.
+GeoSlack is a simple Slack integration that lets your team plot and share their locations on a map 🗺
+
+If your team works in the same office building, GeoSlack can make it easy to keep everyone in the loop on who's running late to work. Team member's can bookmark the GeoSlack app which will post the member's location (optionally auto-refresh your location) and your estimated time of arrival (ETA) in a Slack channel. You can even visit GeoSlack to see everyone's location on a single map.
+
+Your team will thank you when they see you're going to be 10 minutes late due to the traffic downtown and know they must delay that early meeting 📅
 
 ![Find Me](https://styfle.github.io/geoslack/img/findme.png)
 
@@ -72,7 +76,9 @@ This is optional but will allow you to type a keyword and get a link to the GeoS
 
 ## Prior Art
 
-This code was forked from [concurlabs/geoslack](https://github.com/concurlabs/geoslack) which is no longer maintained. Since forking, I added a couple new features including
+This code was forked from [concurlabs/geoslack](https://github.com/concurlabs/geoslack) which is no longer maintained.
+
+Since forking, I added the following new features:
 
 1. A new page to show everyone's location
 2. Display ETA to user's destination 
