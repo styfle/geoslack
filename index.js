@@ -80,7 +80,7 @@ app.post('/coords', async (request, response) => {
 				"pretext": pretext,
 				"title": title,
 				"title_link": `https://www.google.com/maps/place/${latlng}`,
-				"image_url": getImageUrl(people, mapsize, maptype),
+				"image_url": getImageUrl(person, mapsize, maptype),
 				//"thumb_url": "http://example.com/path/to/thumb.png"
 				 "fields":[
 					{
