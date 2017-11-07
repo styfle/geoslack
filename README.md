@@ -12,7 +12,9 @@
 
 GeoSlack is a simple Slack integration that lets your team plot and share their locations on a map 🗺
 
-If your team works in the same office building, GeoSlack can make it easy to keep everyone in the loop on who's running late to work. Team member's can bookmark the GeoSlack app which will post the member's location (optionally auto-refresh your location) and your estimated time of arrival (ETA) in a Slack channel. You can even visit GeoSlack to see everyone's location on a single map.
+If your team works in the same office building, GeoSlack can make it easy to keep everyone in the loop on who's running late to work. Team members can bookmark GeoSlack which will post the member's location (optionally auto-refresh your location) and their estimated time of arrival (ETA) in a Slack channel.
+
+It's a one-click solution to tell your team, "I'm on my way!". You can even visit GeoSlack to see everyone's location on a single map.
 
 Your team will thank you when they see you're going to be 10 minutes late due to the traffic downtown and know they must delay that early meeting 📅
 
