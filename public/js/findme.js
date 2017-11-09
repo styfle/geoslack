@@ -1,33 +1,33 @@
 "use strict";
-const username = document.querySelector('#username');
-const autoupdate = document.querySelector('#autoupdate');
-const statusEl = document.querySelector('#status');
-const submit = document.querySelector('#submit');
-const finding = document.querySelector('#finding');
-const mapcanvas = document.querySelector('#mapcanvas');
-const { geolocation } = navigator;
+var username = document.querySelector('#username');
+var autoupdate = document.querySelector('#autoupdate');
+var statusEl = document.querySelector('#status');
+var submit = document.querySelector('#submit');
+var finding = document.querySelector('#finding');
+var mapcanvas = document.querySelector('#mapcanvas');
+var geolocation = navigator.geolocation;
 function success(position) {
-    const user = username.value;
-    const { maps } = google;
-    const { latitude, longitude, accuracy } = position.coords;
+    var user = username.value;
+    var maps = google.maps;
+    var _a = position.coords, latitude = _a.latitude, longitude = _a.longitude, accuracy = _a.accuracy;
     if (statusEl.className === 'success') {
         return;
     }
     statusEl.textContent = 'found you!';
     statusEl.className = 'success';
     mapcanvas.style.display = 'block';
-    const latlng = new maps.LatLng(latitude, longitude);
-    const mapOptions = {
+    var latlng = new maps.LatLng(latitude, longitude);
+    var mapOptions = {
         zoom: 15,
         center: latlng,
         mapTypeControl: false,
         //navigationControlOptions: { style: maps.NavigationControlStyle.SMALL },
         mapTypeId: maps.MapTypeId.ROADMAP
     };
-    const map = new maps.Map(mapcanvas, mapOptions);
-    const marker = new maps.Marker({
+    var map = new maps.Map(mapcanvas, mapOptions);
+    var marker = new maps.Marker({
         position: latlng,
-        title: `You are here! (within a ${accuracy} meter radius)`,
+        title: "You are here! (within a " + accuracy + " meter radius)",
         label: user
     });
     marker.setMap(map);
@@ -40,8 +40,8 @@ function success(position) {
             user: user
         })
     })
-        .then(o => o.text())
-        .then(o => console.log('Server says ', o))
+        .then(function (o) { return o.text(); })
+        .then(function (o) { return console.log('Server says ', o); })
         .catch(console.error);
 }
 function error(msg) {
@@ -54,7 +54,7 @@ function getLocation() {
     statusEl.textContent = 'checking...';
     statusEl.className = '';
     if (geolocation) {
-        geolocation.getCurrentPosition(success, (err) => error(err.message));
+        geolocation.getCurrentPosition(success, function (err) { return error(err.message); });
     }
     else {
         error('not supported');
@@ -63,15 +63,15 @@ function getLocation() {
 function findme() {
     username.value = localStorage.getItem('geoslack-username') || '';
     autoupdate.checked = localStorage.getItem('geoslack-autoupdate') === 'true';
-    username.addEventListener('change', () => {
+    username.addEventListener('change', function () {
         localStorage.setItem('geoslack-username', username.value);
     });
-    autoupdate.addEventListener('change', () => {
+    autoupdate.addEventListener('change', function () {
         localStorage.setItem('geoslack-autoupdate', autoupdate.checked.toString());
     });
-    submit.addEventListener('click', () => {
+    submit.addEventListener('click', function () {
         getLocation();
-        setInterval(() => {
+        setInterval(function () {
             if (autoupdate.checked) {
                 getLocation();
             }
