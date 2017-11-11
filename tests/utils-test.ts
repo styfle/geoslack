@@ -1,4 +1,4 @@
-import { fetchAsync, getExpiredUsers } from '../utils';
+import { fetchAsync, getExpiredUsers } from '../src/backend/utils';
 import * as test from 'tape';
 
 function trim(s: string) {

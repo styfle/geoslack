@@ -2,9 +2,9 @@
   "name": "geoslack",
   "version": "0.3.2",
   "description": "Geolocate your team in Slack",
-  "main": "index.js",
+  "main": "src/backend/server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/backend/server.js",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-frontend.json",
     "test": "tape tests/**/*.js"
   },

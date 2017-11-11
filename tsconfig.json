@@ -6,8 +6,9 @@
         "strict": true,
         "sourceMap": false
     },
-    "exclude": [
-        "node_modules",
-        "public"
+    "include": [
+        "src/backend/**/*",
+        "src/shared/**/*",
+        "tests/**/*"
     ]
 }

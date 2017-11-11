@@ -9,11 +9,8 @@
         "strict": true,
         "sourceMap": false
     },
-    "exclude": [
-        "node_modules"
-    ],
     "include": [
-        "public/js/**/*",
-        "typings/**/*"
+        "src/frontend/**/*",
+        "src/shared/**/*"
     ]
 }

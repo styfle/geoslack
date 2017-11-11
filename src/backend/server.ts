@@ -28,9 +28,9 @@ const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
 
 app.set('port', port);
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../frontend'));
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
 
 app.get('/', (request, response) => {
