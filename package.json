@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/backend/server.js",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-frontend.json",
-    "test": "tape tests/**/*.js"
+    "test": "tape tests/**/*.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
