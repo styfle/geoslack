@@ -1,13 +1,15 @@
 const { APP_URL, GMAPS_API_KEY, SLACK_WEBHOOK_URL, DESTINATION, PORT } = process.env;
+
 if (!APP_URL) {
-    console.error('Expected APP_URL');
+    throw new Error('Expected APP_URL');
 }
 if (!GMAPS_API_KEY) {
-    console.error('Expected GMAPS_API_KEY');
+    throw new Error('Expected GMAPS_API_KEY');
 }
 if (!SLACK_WEBHOOK_URL) {
-    console.error('Expected SLACK_WEBHOOK_URL');
+    throw new Error('Expected SLACK_WEBHOOK_URL');
 }
+
 const config = {
     port: PORT || 5000,
     app_url: APP_URL,
@@ -20,4 +22,4 @@ const config = {
     colors: ["red","green","blue","orange","yellow","purple","gray","brown","black","white"],
 };
 
-module.exports = config;
+export default config;

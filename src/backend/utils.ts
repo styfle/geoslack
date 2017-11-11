@@ -1,9 +1,13 @@
 
-const https = require('https');
-const querystring = require('querystring');
+import * as https from 'https';
+import * as querystring from 'querystring';
 
-function fetchAsync(options) {
-	return new Promise((resolve, reject) => {
+interface FetchAsyncOptions extends https.RequestOptions {
+	data?: any;
+}
+
+export function fetchAsync(options: FetchAsyncOptions) {
+	return new Promise<string>((resolve, reject) => {
 		const dataString = JSON.stringify(options.data);
 		let headers = {};
 
@@ -46,12 +50,14 @@ function fetchAsync(options) {
 	});
 }
 
-function getExpiredUsers(userToPerson, now) {
+export function getExpiredUsers(userToPerson: UserToPerson, now: Date) {
 	const time = now.getTime() - (15 * 60 * 1000); // 15 min ago
-	return Object.values(userToPerson).filter(p => p.date_started < time);
+	return Object
+		.values(userToPerson)
+		.filter(p => p.date_started.getTime() < time);
 }
 
-function getImageUrl(p, size, maptype) {
+export function getImageUrl(p: Person, size: string, maptype: string) {
 	const host = `https://maps.googleapis.com/maps/api/staticmap`;
 	const shadow = true;
 	const qs = querystring.stringify({
@@ -62,7 +68,7 @@ function getImageUrl(p, size, maptype) {
 	return `${host}?${qs}`;
 }
 
-async function getEtaAsync(origin, destination, key) {
+export async function getEtaAsync(key: string, origin: string, destination?: string) {
 	if (!origin || !destination) {
 		return '';
 	}
@@ -88,10 +94,3 @@ async function getEtaAsync(origin, destination, key) {
 
 	return obj.rows[0].elements[0].duration.text;
 }
-
-module.exports = {
-	fetchAsync: fetchAsync,
-	getExpiredUsers: getExpiredUsers,
-	getImageUrl: getImageUrl,
-	getEtaAsync: getEtaAsync
-};

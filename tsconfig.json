@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2017",
+        "strict": true,
+        "sourceMap": false
+    },
+    "include": [
+        "src/backend/**/*",
+        "src/shared/**/*",
+        "tests/**/*"
+    ]
+}

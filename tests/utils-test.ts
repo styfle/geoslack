@@ -1,7 +1,7 @@
-const { fetchAsync, getExpiredUsers } = require('../utils');
-const test = require('tape');
+import { fetchAsync, getExpiredUsers } from '../src/backend/utils';
+import * as test from 'tape';
 
-function trim(s) {
+function trim(s: string) {
     return s.replace(/[\s]/g, '');
 }
 
@@ -26,7 +26,7 @@ test('fetchAsync', async t => {
 
 test('getExpiredUsers', t => {
     t.plan(1);
-    const userToPerson = {
+    const userToPerson: any = {
         'Amy': { user: 'Amy', date_started: new Date('2017-10-31T20:30:00.000Z') },
         'Bob': { user: 'Bob', date_started: new Date('2017-10-31T20:20:00.000Z') },
         'Chi': { user: 'Chi', date_started: new Date('2017-10-31T20:10:00.000Z') },

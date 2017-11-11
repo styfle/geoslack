@@ -1,18 +1,18 @@
-async function loop(position) {
+async function loop() {
     const { maps } = google;
-    const mapcanvas = document.querySelector('#mapcanvas');
-    const count = document.querySelector('#count');
+    const mapcanvas = document.querySelector('#mapcanvas') as HTMLElement;
+    const count = document.querySelector('#count') as HTMLElement;
     const currentUser = localStorage.getItem('geoslack-username');
-    let centerLatLng = null;
+    let centerLatLng: google.maps.LatLng | null = null;
 
     const fetchOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: new Headers({ 'Content-Type': 'application/json' })
     };
 
     const res = await fetch('/coords-everyone', fetchOptions);
-    const people = await res.json();
-    count.textContent = people.length;
+    const people = await res.json() as Person[];
+    count.textContent = people.length.toString();
 
     const markers = people.map(p => {
         const { user, lat, lng } = p;
@@ -26,13 +26,16 @@ async function loop(position) {
         });
     });
 
-    const mapOptions = {
+    const mapOptions: google.maps.MapOptions = {
         zoom: 15,
-        center: centerLatLng,
         mapTypeControl: false,
-        navigationControlOptions: { style: maps.NavigationControlStyle.SMALL },
+        //navigationControlOptions: { style: maps.NavigationControlStyle.SMALL },
         mapTypeId: maps.MapTypeId.ROADMAP
     };
+
+    if (centerLatLng) {
+        mapOptions.center = centerLatLng;
+    }
 
     const map = new maps.Map(mapcanvas, mapOptions);
 
@@ -43,9 +46,9 @@ async function loop(position) {
     mapcanvas.style.display = 'block';
 }
 
-function init() {
+function everyone() {
     loop();
     setInterval(loop, 1000 * 60); // 1 minute
 }
 
-init();
+everyone();
