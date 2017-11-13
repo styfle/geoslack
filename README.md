@@ -1,4 +1,4 @@
-# GeoSlack
+# GeoSlack <img alt="Logo" width="28" height="28" src="https://styfle.github.io/geoslack/img/geoslack.svg" align="left" />
 
 [![npm](https://img.shields.io/npm/v/geoslack.svg)](https://www.npmjs.com/package/geoslack)
 [![Downloads](https://img.shields.io/npm/dt/geoslack.svg)](https://www.npmjs.com/package/geoslack)
