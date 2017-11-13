@@ -44,8 +44,8 @@ This is necessary for the GeoSlack app to post a message in slack with a map/loc
 - Double check the channel name
 - Copy the Webhook URL for later
 - Assign a Custom Name such as "GeoSlack"
-- Assign a Custom Icon such as the `:world_map:` emoji
-   ![IncomingWebHook02](https://styfle.github.io/geoslack/img/pic3.png)
+- Assign a Custom Icon such as the [GeoSlack Logo](https://styfle.github.io/geoslack/img/geoslack.png)
+   ![IncomingWebHook02](https://styfle.github.io/geoslack/img/webhook-name.png)
 - Click the Save Settings button
 
 ## Deployment
@@ -85,3 +85,4 @@ Since forking, I added the following new features:
 1. A new page to show everyone's location
 2. Display ETA to user's destination 
 3. Periodically update the user's location
+4. A logo
