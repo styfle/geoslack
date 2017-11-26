@@ -11,7 +11,7 @@ section, header, footer {
 }
 
 #wrapper {
-  width: 600px;
+  max-width: 600px;
   margin: 0 auto;
   background: #fff;
   border-radius: 10px;
@@ -21,6 +21,7 @@ section, header, footer {
 
 h1 {
   padding-top: 10px;
+  font-size: 38px;
 }
 
 h2 {
@@ -49,11 +50,24 @@ footer > * {
 }
 
 button, input {
-  font-size: 16px;
+  font-size: 30px;
   padding: 3px;
   margin-left: 5px;
   border: 1px solid #d2d2d2;
   border-radius: 3px;
+}
+
+label {
+  font-size: 24px;
+}
+
+#autoupdate {
+  transform: scale(2);
+}
+
+#username {
+  width: 200px;
+  max-width: 43vw;
 }
 
 #submit {
@@ -61,10 +75,10 @@ button, input {
 	background: #45c343;
 	color: #fff;
   font-weight: bold;
-  line-height: 36px;
+  line-height: 70px;
   text-align: center;
   text-transform: uppercase;
-  width: 191px;
+  width: 100%;
   box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.33);
 }
 
