@@ -76,9 +76,11 @@ This is optional but will allow you to type a keyword and get a link to the GeoS
 
 This code was forked from [concurlabs/geoslack](https://github.com/concurlabs/geoslack) which is no longer maintained.
 
-Since forking, I added the following new features:
+Since forking, the following new features were added:
 
 1. A new page to show everyone's location
 2. Display ETA to user's destination 
 3. Periodically update the user's location
 4. A logo
+
+Follow [ceriously.com](https://www.ceriously.com) for more Open Source Software!
