@@ -35,13 +35,13 @@ This is necessary for the GeoSlack app to post a message in slack with a map/loc
 - Go to [api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks#share_your_incoming_webhook_as_a_slack_app)
 - Click on [incoming webhook integration](https://my.slack.com/services/new/incoming-webhook/) near the top
 - Select a channel and then click the big green **Add Incoming WebHooks Integration** button
-   ![IncomingWebhook01](pic2.png)
+   ![IncomingWebhook01](img/pic2.png)
 - Scroll down to the **Integration Settings**
 - Double check the channel name
 - Copy the Webhook URL for later
 - Assign a Custom Name such as "GeoSlack"
 - Assign a Custom Icon such as the [GeoSlack Logo](geoslack.png)
-   ![IncomingWebHook02](webhook-name.png)
+   ![IncomingWebHook02](img/webhook-name.png)
 - Click the Save Settings button
 
 ## Deployment
