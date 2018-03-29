@@ -12,7 +12,7 @@ GeoSlack is a simple Slack integration that lets your team plot and share their 
 
 ## Docs
 
-[Read the docs](http://geoslack.ceriously.com) for installation steps.
+[Read the docs](https://geoslack.ceriously.com) for installation steps.
 
 ## Author
 
