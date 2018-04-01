@@ -1,6 +1,6 @@
 {
   "name": "geoslack",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Geolocate your team in Slack",
   "main": "src/backend/server.js",
   "homepage": "https://geoslack.ceriously.com",
