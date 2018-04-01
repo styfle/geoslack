@@ -3,6 +3,7 @@
   "version": "0.5.5",
   "description": "Geolocate your team in Slack",
   "main": "src/backend/server.js",
+  "homepage": "https://geoslack.ceriously.com",
   "scripts": {
     "start": "node src/backend/server.js",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-frontend.json",
