@@ -1,10 +1,10 @@
 # GeoSlack <img alt="Logo" width="28" height="28" src="https://styfle.github.io/geoslack/img/geoslack.svg" align="left" />
 
-[![npm](https://img.shields.io/npm/v/geoslack.svg)](https://www.npmjs.com/package/geoslack)
-[![Downloads](https://img.shields.io/npm/dt/geoslack.svg)](https://www.npmjs.com/package/geoslack)
-[![Dependency Status](https://david-dm.org/styfle/geoslack.svg)](https://david-dm.org/styfle/geoslack)
-[![devDependency Status](https://david-dm.org/styfle/geoslack/dev-status.svg)](https://david-dm.org/styfle/geoslack#info=devDependencies)
-[![Build Status](https://travis-ci.org/styfle/geoslack.svg?branch=master)](https://travis-ci.org/styfle/geoslack)
+[![npm](https://badgen.net/npm/v/geoslack)](https://www.npmjs.com/package/geoslack)
+[![Downloads](https://badgen.net/npm/dt/geoslack)](https://www.npmjs.com/package/geoslack)
+[![Dependency Status](https://badgen.net/david/dep/styfle/geoslack)](https://david-dm.org/styfle/geoslack)
+[![devDependency Status](https://badgen.net/david/dev/styfle/geoslack)](https://david-dm.org/styfle/geoslack?type=dev)
+[![Build Status](https://badgen.net/travis/styfle/geoslack)](https://travis-ci.org/styfle/geoslack)
 
 GeoSlack is a simple Slack integration that lets your team plot and share their locations on a map 🗺
 
