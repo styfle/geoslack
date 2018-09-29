@@ -1,10 +1,6 @@
 import { fetchAsync, getExpiredUsers } from '../src/backend/utils';
 import * as test from 'tape';
 
-function trim(s: string) {
-    return s.replace(/[\s]/g, '');
-}
-
 test('fetchAsync', async t => {
     t.plan(1);
 
@@ -26,12 +22,16 @@ test('fetchAsync', async t => {
 
 test('getExpiredUsers', t => {
     t.plan(1);
-    const userToPerson: any = {
+    const userToPerson: UserToPerson = new Map();
+    const obj: any = {
         'Amy': { user: 'Amy', date_started: new Date('2017-10-31T20:30:00.000Z') },
         'Bob': { user: 'Bob', date_started: new Date('2017-10-31T20:20:00.000Z') },
         'Chi': { user: 'Chi', date_started: new Date('2017-10-31T20:10:00.000Z') },
         'Dye': { user: 'Dye', date_started: new Date('2017-10-31T20:00:00.000Z') },
     };
+    for (var key in obj) {
+        userToPerson.set(key, obj[key]);
+    }
     const now = new Date('2017-10-31T20:30:00.000Z');
     const actual = getExpiredUsers(userToPerson, now);
     t.equal(actual.length, 2);

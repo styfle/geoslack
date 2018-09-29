@@ -16,7 +16,6 @@ const config = {
     gmaps_api_key: GMAPS_API_KEY,
     slack_webhook_url: SLACK_WEBHOOK_URL,
     destination: DESTINATION,
-    decay_minutes: 10,
     mapsize: "500x400",
     maptype: "roadmap",
     colors: ["red","green","blue","orange","yellow","purple","gray","brown","black","white"],
