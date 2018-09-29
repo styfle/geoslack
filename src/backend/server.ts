@@ -99,24 +99,24 @@ app.post('/coords', async (request, response) => {
 });
 
 app.listen(port, () => {
-  console.log('Node app is running on port', port);
+    console.log('Node app is running on port', port);
 });
 
 function getPerson(date_started: Date, user: string, lat: number, lng: number) {
-  let person = userToPerson[user];
-
-  if (!person) {
-    const color = colors[pplCtr % colors.length];
-    person = { user, color, date_started, lat, lng };
-    pplCtr++;
-    userToPerson[user] = person;
-  } else {
-		person.date_started = date_started;
-		person.lat = lat;
-		person.lng = lng;
-	}
-  
-  return person;
+    let person = userToPerson[user];
+    
+    if (!person) {
+        const color = colors[pplCtr % colors.length];
+        person = { user, color, date_started, lat, lng };
+        pplCtr++;
+        userToPerson[user] = person;
+    } else {
+        person.date_started = date_started;
+        person.lat = lat;
+        person.lng = lng;
+    }
+    
+    return person;
 }
 
 
