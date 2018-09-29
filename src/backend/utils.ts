@@ -51,8 +51,8 @@ export function fetchAsync(options: FetchAsyncOptions) {
 
 export function getExpiredUsers(userToPerson: UserToPerson, now: Date) {
 	const time = now.getTime() - (15 * 60 * 1000); // 15 min ago
-	return Object
-		.values(userToPerson)
+	return Array
+		.from(userToPerson.values())
 		.filter(p => p.date_started.getTime() < time);
 }
 

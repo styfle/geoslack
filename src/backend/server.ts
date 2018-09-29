@@ -21,7 +21,7 @@ const {
 } = config;
 
 const app = express();
-let userToPerson: UserToPerson = {};
+let userToPerson: UserToPerson = new Map<string, Person>();
 let pplCtr = 0;
 const script_src = `https://maps.google.com/maps/api/js?key=${gmaps_api_key}`;
 
@@ -41,7 +41,7 @@ app.get('/everyone', (request, response) => {
 });
 
 app.get('/coords-everyone', (request, response) => {
-    const people = Object.values(userToPerson);
+    const people = Array.from(userToPerson.values());
     const json = JSON.stringify(people);
     response.send(json);
 });
@@ -62,9 +62,9 @@ app.post('/coords', async (request, response) => {
     const person = getPerson(now, user, lat, lng);
     const expiredPeople = getExpiredUsers(userToPerson, now);
     expiredPeople.forEach(p => {
-        delete userToPerson[p.user];
+        userToPerson.delete(p.user);
     });
-    const people = Object.values(userToPerson);
+    const people = Array.from(userToPerson.values());
     const pretext = `GeoSlack is tracking ${people.length} people`;
     let title = `${person.user}'s location`;
     const eta = await getEtaAsync(gmaps_api_key, latlng, destination);
@@ -103,13 +103,13 @@ app.listen(port, () => {
 });
 
 function getPerson(date_started: Date, user: string, lat: number, lng: number) {
-    let person = userToPerson[user];
+    let person = userToPerson.get(user);
     
     if (!person) {
         const color = colors[pplCtr % colors.length];
         person = { user, color, date_started, lat, lng };
         pplCtr++;
-        userToPerson[user] = person;
+        userToPerson.set(user, person);
     } else {
         person.date_started = date_started;
         person.lat = lat;

@@ -6,4 +6,4 @@ interface Person {
     lng: number;
 }
 
-type UserToPerson = { [user: string]: Person };
+type UserToPerson = Map<string, Person>;
