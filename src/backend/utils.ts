@@ -9,18 +9,17 @@ interface FetchAsyncOptions extends https.RequestOptions {
 export function fetchAsync(options: FetchAsyncOptions) {
 	return new Promise<string>((resolve, reject) => {
 		const dataString = JSON.stringify(options.data);
-		let headers = {};
+
+		options.headers = {
+			'Content-Type': 'application/json',
+			'Content-Length': dataString ? dataString.length : 0
+		};
 
 		if (options.method === 'GET') {
 			const qs = querystring.stringify(options.data);
 			if (qs) {
 				options.path += '?' + qs;
 			}
-		} else {
-			headers = {
-				'Content-Type': 'application/json',
-				'Content-Length': dataString ? dataString.length : 0
-			};
 		}
 
 		const req = https.request(options, (res) => {
