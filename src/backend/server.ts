@@ -15,7 +15,6 @@ const {
     gmaps_api_key,
     slack_webhook_url,
     destination,
-    decay_minutes,
     mapsize,
     maptype,
     colors
