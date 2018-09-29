@@ -1,10 +1,6 @@
 import { fetchAsync, getExpiredUsers } from '../src/backend/utils';
 import * as test from 'tape';
 
-function trim(s: string) {
-    return s.replace(/[\s]/g, '');
-}
-
 test('fetchAsync', async t => {
     t.plan(1);
 
