@@ -16,4 +16,4 @@ GeoSlack is a simple Slack integration that lets your team plot and share their 
 
 ## Author
 
-Follow [ceriously.com](https://www.ceriously.com) for more Open Source Software!
+Developed by [styfle](https://styfle.dev)
